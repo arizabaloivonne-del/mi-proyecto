@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: mi-proyecto
+    env: python
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput"
+    startCommand: "gunicorn webVentas.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: webVentas.settings
