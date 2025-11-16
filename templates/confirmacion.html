@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Pedido</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <div class="ticket">
+        <h2>✔ Pedido Confirmado</h2>
+        <p><strong>Número de pedido:</strong> {{ pedido.id }}</p>
+        <p><strong>Fecha:</strong> {{ pedido.fecha|date:"d/m/Y H:i" }}</p>
+        <p><strong>Cliente:</strong> {{ pedido.usuario.username }}</p>
+
+    <!-- ✅ Total del pedido en una sola línea -->
+<div style="display: flex; align-items: center; gap: 10px; margin-top: 15px;">
+    <span style="font-weight:600; font-size:18px;">Total del pedido:</span>
+    <span style="color:#bfa14c; font-weight:700; font-size:22px;">${{ pedido.total }}</span>
+</div>
+
+
+
+
+        <div class="footer">
+            <p>Gracias por tu compra 🎉</p>
+            <p>Se enviará un correo de confirmación con los detalles de tu pedido.</p>
+            <p>¡Esperamos verte pronto!</p>
+        </div>
+
+        <a href="{% url 'inicio' %}" class="btn-regresar">← Regresar</a>
+    </div>
+</body>
+</html>

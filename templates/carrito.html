@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Tu Carrito</h1>
+    </header>
+
+    <main class="carrito-contenido">
+        {% if items %}
+            {% for item in items %}
+            <div class="producto">
+                <input type="checkbox" class="seleccionar-producto">
+                <img src="{% static 'imagenes/' %}{{ item.producto.imagen }}" alt="{{ item.producto.nombre }}">
+                <div>
+                    <h3>{{ item.producto.nombre }}</h3>
+                    <p>Precio: ${{ item.producto.precio }}</p>
+
+                    <!-- Formulario para actualizar cantidad -->
+                    <form method="post" action="{% url 'actualizar_cantidad' item.producto.id %}">
+                        {% csrf_token %}
+                        <label>Cantidad:
+                            <input type="number" name="cantidad" value="{{ item.cantidad }}" min="0">
+                        </label>
+                        <button type="submit">Actualizar</button>
+                    </form>
+
+                    <p>Subtotal: ${{ item.subtotal }}</p>
+
+                    <!-- Formulario para eliminar producto -->
+                    <form method="post" action="{% url 'quitar_del_carrito' item.producto.id %}" onsubmit="return confirm('¿Eliminar este producto del carrito?');">
+                        {% csrf_token %}
+                        <button type="submit" class="eliminar">Eliminar</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="total">
+                <h2>Total: $<span id="total">{{ total }}</span></h2>
+                <button id="quitar-seleccion">Quitar Selección</button>
+                <a href="{% url 'checkout' %}" class="btn-confirmar">Proceder al Pago</a>
+                <!-- Botón para seguir comprando -->
+                <a href="{% url 'inicio' %}" class="btn-seguir">Seguir comprando</a>
+            </div>
+        {% else %}
+            <p>Tu carrito está vacío.</p>
+        {% endif %}
+    </main>
+
+    <script>
+        function calcularTotal() {
+            let total = 0;
+            document.querySelectorAll('.producto').forEach(producto => {
+                const checkbox = producto.querySelector('.seleccionar-producto');
+                if (checkbox.checked) {
+                    const precioTexto = producto.querySelector('p').textContent;
+                    const precio = parseFloat(precioTexto.replace('Precio: $', ''));
+                    const cantidadInput = producto.querySelector('input[name="cantidad"]');
+                    const cantidad = parseInt(cantidadInput.value) || 1;
+                    total += precio * cantidad;
+                }
+            });
+            document.getElementById('total').textContent = total.toFixed(2);
+        }
+
+        document.querySelectorAll('.seleccionar-producto').forEach(cb => {
+            cb.addEventListener('change', calcularTotal);
+        });
+
+        document.getElementById("quitar-seleccion").addEventListener("click", () => {
+            document.querySelectorAll(".seleccionar-producto").forEach(cb => {
+                if (cb.checked) {
+                    cb.checked = false;
+                }
+            });
+            calcularTotal();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formas de Pago</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+
+<body>
+    <header class="header">
+        <h1>Formas de Pago</h1>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Introducción</h2>
+            <p>En <strong>MichelleJewelry</strong>, ofrecemos múltiples métodos de pago para que tu compra sea segura y conveniente.</p>
+        </section>
+
+        <section>
+            <h2>Métodos de Pago Disponibles</h2>
+            <ul>
+                <li><strong>Tarjeta de Crédito/Débito:</strong> Visa, MasterCard y American Express.</li>
+                <li><strong>Transferencia Bancaria:</strong> Aceptamos pagos directos desde tu banco.</li>
+                <li><strong>PayPal:</strong> Paga de forma rápida y segura.</li>
+                <li><strong>Pago en Efectivo:</strong> Disponible en tiendas asociadas.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Seguridad en los Pagos</h2>
+            <p>Utilizamos tecnología de cifrado para proteger tus datos y garantizar transacciones seguras.</p>
+        </section>
+
+        <section>
+            <h2>Preguntas Frecuentes</h2>
+            <p>Si tienes dudas sobre algún método de pago, contáctanos y te ayudaremos a elegir la mejor opción.</p>
+        </section>
+
+        <section>
+            <h2>Contacto</h2>
+            <p>Si tienes preguntas sobre pagos, escríbenos a: <a href="mailto:ivonnesanchez20619@gmail.com">ivonnesanchez20619@gmail.com</a>.</p>
+        </section>
+    </main>
+
+    <!-- Botón de regreso -->
+    <section class="container">
+        <a href="{% url 'inicio' %}" class="btn-regresar">← Regresar al Inicio</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 MichelleJewelry. Todos los derechos reservados.</p>
+    </footer>
+</body>
+
+</html>

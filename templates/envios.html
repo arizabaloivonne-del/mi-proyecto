@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información de Envíos</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+
+<body>
+    <header class="header">
+        <h1>Información de Envíos</h1>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Introducción</h2>
+            <p>En <strong>MichelleJewelry</strong>, queremos que recibas tus productos de manera rápida y segura. Aquí te explicamos todo sobre nuestros envíos.</p>
+        </section>
+
+        <section>
+            <h2>Tipos de Envío</h2>
+            <ul>
+                <li><strong>Envío Estándar:</strong> Entrega de 5 a 7 días hábiles.</li>
+                <li><strong>Envío Exprés:</strong> Entrega en 2 a 3 días hábiles.</li>
+                <li><strong>Envío Internacional:</strong> Disponible para algunos países, tiempos de entrega varían según destino.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Costos de Envío</h2>
+            <p>El costo del envío se calcula según la ubicación y el método seleccionado:</p>
+            <ul>
+                <li>Gratis en compras superiores a $1,500 MXN.</li>
+                <li>Envío Estándar: $100 MXN.</li>
+                <li>Envío Exprés: $250 MXN.</li>
+                <li>Envío Internacional: Variable según el destino.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Seguimiento de Pedidos</h2>
+            <p>Recibirás un código de rastreo cuando tu pedido haya sido enviado. Puedes verificar el estado de tu envío en nuestro portal de seguimiento.</p>
+        </section>
+
+        <section>
+            <h2>Contacto</h2>
+            <p>Si tienes dudas sobre tu pedido, contáctanos en: <a href="mailto:ivonnesanchez20619@gmail.com">ivonnesanchez20619@gmail.com</a>.</p>
+        </section>
+    </main>
+
+    <!-- Botón de regreso -->
+    <section class="container">
+        <a href="{% url 'inicio' %}" class="btn-regresar">← Regresar al Inicio</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 MichelleJewelry. Todos los derechos reservados.</p>
+    </footer>
+</body>
+
+</html>

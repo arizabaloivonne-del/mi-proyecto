@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirmación de Pedido</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff8f0;
+      color: #333;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #ffffff;
+      border: 1px solid #e0d4b8;
+      border-radius: 8px;
+      padding: 30px;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      max-height: 80px;
+    }
+    h1 {
+      color: #ee66a5;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin-bottom: 8px;
+      padding: 6px;
+      background-color: #f3eef9;
+      border-radius: 4px;
+    }
+    .total {
+      text-align: right;
+      font-size: 18px;
+      margin-top: 10px;
+      color: #f188c9;
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      text-align: center;
+      color: #777;
+    }
+    .footer a {
+      color: #f188c9;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="{% static 'imagenes/logo2.PNG' %}" alt="Logo de la tienda">
+    </div>
+
+    <h1>Pedido confirmado 🎉</h1>
+    <p>Gracias por tu compra, {{ pedido.usuario.username }}.</p>
+
+    <p><strong>Número de pedido:</strong> {{ pedido.id }}<br>
+       <strong>Fecha:</strong> {{ pedido.fecha|date:"d/m/Y H:i" }}</p>
+
+    <p><strong>Productos comprados:</strong></p>
+    <ul>
+      {% for item in pedido.pedidoitem_set.all %}
+        <li>
+          {{ item.producto.nombre }} × {{ item.cantidad }} — 
+          ${{ item.precio_unitario|floatformat:2 }} c/u
+        </li>
+      {% endfor %}
+    </ul>
+
+    <p class="total"><strong>Total:</strong> ${{ pedido.total }}</p>
+
+    <div class="footer">
+      <p>📦 Tu pedido será procesado pronto.<br>
+         ¿Tienes dudas? <a href="mailto:contacto@tutienda.com">Escríbenos</a> o visita nuestra <a href="https://tutienda.com/envios">página de envíos</a>.</p>
+      <p>— Michelle Jewerly-</p>
+    </div>
+  </div>
+</body>
+</html>

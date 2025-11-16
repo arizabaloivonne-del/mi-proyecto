@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+
+<body>
+    <header class="header">
+        <h1>Política de Privacidad</h1>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Introducción</h2>
+            <p>En <strong>MichelleJewelry</strong>, tu privacidad es una prioridad. Esta política describe cómo recolectamos, usamos y protegemos tu información personal.</p>
+        </section>
+
+        <section>
+            <h2>Información que Recopilamos</h2>
+            <ul>
+                <li>Datos de contacto como nombre, correo electrónico y número de teléfono.</li>
+                <li>Información sobre tu navegación en nuestro sitio, como páginas visitadas y tiempo en el sitio.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Uso de la Información</h2>
+            <p>La información que recopilamos se utiliza para:</p>
+            <ul>
+                <li>Proporcionar y mejorar nuestros servicios.</li>
+                <li>Ofrecer soporte y responder a tus consultas.</li>
+                <li>Enviar comunicaciones relacionadas con tus intereses.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Protección de la Información</h2>
+            <p>Mantenemos tus datos seguros mediante medidas técnicas y organizativas, y nunca compartimos tu información con terceros sin tu consentimiento.</p>
+        </section>
+
+        <section>
+            <h2>Contacto</h2>
+            <p>Si tienes preguntas sobre esta política, contáctanos a través de: <a href="mailto:ivonnesanchez20619@gmail.com">ivonnesanchez20619@gmail.com</a>.</p>
+        </section>
+    </main>
+
+    <!-- Botón de regreso -->
+    <section class="container">
+        <a href="{% url 'inicio' %}" class="btn-regresar">← Regresar al Inicio</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 MichelleJewelry. Todos los derechos reservados.</p>
+    </footer>
+</body>
+
+</html>

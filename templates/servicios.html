@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros Servicios</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+
+<body>
+    <header class="header">
+        <h1>Nuestros Servicios</h1>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Introducción</h2>
+            <p>En <strong>MichelleJewelry</strong>, ofrecemos servicios exclusivos para asegurar una experiencia única en cada compra.</p>
+        </section>
+
+        <section>
+            <h2>Servicios Disponibles</h2>
+            <ul>
+                <li><strong>Personalización de Joyas:</strong> Diseñamos piezas únicas adaptadas a tu estilo.</li>
+                <li><strong>Envío Rápido:</strong> Recibe tus pedidos en el menor tiempo posible.</li>
+                <li><strong>Garantía de Calidad:</strong> Todos nuestros productos cuentan con certificación premium.</li>
+                <li><strong>Atención al Cliente 24/7:</strong> Estamos disponibles para resolver dudas y ayudarte en cada compra.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Cómo Solicitar un Servicio</h2>
+            <p>Puedes contactarnos directamente para solicitar cualquiera de estos servicios, asegurándote de obtener exactamente lo que buscas.</p>
+        </section>
+
+        <section>
+            <h2>Contacto</h2>
+            <p>Si deseas más información, escríbenos a: <a href="mailto:ivonnesanchez20619@gmail.com">ivonnesanchez20619@gmail.com</a>.</p>
+        </section>
+    </main>
+
+    <!-- Botón de regreso -->
+    <section class="container">
+        <a href="{% url 'inicio' %}" class="btn-regresar">← Regresar al Inicio</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 MichelleJewelry. Todos los derechos reservados.</p>
+    </footer>
+</body>
+
+</html>

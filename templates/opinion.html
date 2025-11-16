@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <title>Formulario de Opiniones</title>
+</head>
+<body class="pagina-contacto">
+    <div class="wrap opinion-container">
+        <h1>Deja tu Opinión</h1>
+        <form method="post" action="{% url 'guardar_opinion' %}">
+            {% csrf_token %}
+            <div style="text-align: left;">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="NOMBRE:" required class="formulario">
+
+                <label for="producto">Producto Comprado:</label>
+                <input type="text" id="producto" name="producto" placeholder="PRODUCTO COMPRADO:" required class="formulario">
+
+                <label for="opinion">Opinión:</label>
+                <textarea id="opinion" name="opinion" rows="4" placeholder="ESCRIBE TU OPINIÓN AQUÍ:" required class="mensaje"></textarea>
+
+                <label for="calificacion">Calificación:</label>
+                <select id="calificacion" name="calificacion" required class="formulario">
+                    <option value="" disabled selected>Selecciona una calificación</option>
+                    <option value="1">★</option>
+                    <option value="2">★★</option>
+                    <option value="3">★★★</option>
+                    <option value="4">★★★★</option>
+                    <option value="5">★★★★★</option>
+                </select>
+            </div>
+            <input type="submit" value="Enviar Opinión" class="btn-regresar">
+        </form>
+        <a href="{% url 'inicio' %}" class="btn-regresar">← Regresar</a>
+    </div>
+</body>
+</html>

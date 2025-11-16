@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información</title>
+   <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Más Información sobre Nuestros Productos</h1>
+    </header>
+
+    <main>
+        <!-- Sección 1: Información General -->
+        <section>
+            <h2>¿Qué Ofrecemos?</h2>
+            <p>Nuestro compromiso es ofrecer productos de alta calidad al mejor precio. Garantizamos satisfacción, diseño moderno y una experiencia de compra inolvidable.</p>
+            <img src="{% static 'imagenes/imagen8.png' %}" alt="Imagen del Producto">
+        </section>
+
+        <!-- Sección 2: Testimonios de Clientes -->
+        <section class="testimonios">
+            <h2>Testimonios de Nuestros Clientes</h2>
+            <div id="contenedor-testimonios">
+                <!-- Los testimonios dinámicos aparecerán aquí -->
+            </div>
+        </section>
+
+        <!-- Sección 3: Promociones Especiales -->
+        <section>
+            <h2>Promociones Especiales</h2>
+            <p>¡Solo por tiempo limitado! Compra 2 productos y obtén un 20% de descuento en tu pedido. Aprovecha antes de que termine.</p>
+        </section>
+
+        <!-- Sección 4: Preguntas Frecuentes (FAQ) -->
+        <section>
+            <h2>Preguntas Frecuentes</h2>
+            <div class="faq-item">
+                <h3>¿Cuánto tarda el envío?</h3>
+                <p>El envío tarda entre 3 y 5 días hábiles dependiendo de tu ubicación.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿Aceptan devoluciones?</h3>
+                <p>Sí, aceptamos devoluciones dentro de los primeros 30 días después de la compra.</p>
+            </div>
+        </section>
+
+        <a href="{% url 'inicio' %}" class="btn-1">Regresar a la Página Principal</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MichelleJewelry. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- JavaScript para mostrar testimonios -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contenedor = document.getElementById('contenedor-testimonios');
+            const opiniones = JSON.parse(localStorage.getItem('opiniones')) || [];
+
+            // Generar HTML para cada opinión
+            opiniones.forEach(opinion => {
+                const testimonio = document.createElement('div');
+                testimonio.className = 'testimonio';
+                testimonio.innerHTML = `
+                    <p>"${opinion.opinion}"</p>
+                    <span>- ${opinion.nombre}, Producto: ${opinion.producto}, Calificación: ${'★'.repeat(opinion.calificacion)}</span>
+                `;
+                contenedor.appendChild(testimonio);
+            });
+
+            // Mostrar un mensaje si no hay testimonios
+            if (opiniones.length === 0) {
+                contenedor.innerHTML = '<p>No hay testimonios disponibles aún.</p>';
+            }
+        });
+    </script>
+</body>
+</html>

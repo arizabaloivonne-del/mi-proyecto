@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar sesión</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+
+    
+<div class="pagina-login">
+
+    <div class="login-container">
+        <p class="enlace-registro">
+    <a href="{% url 'inicio' %}" class="btn-volver">← Regresar al inicio</a>
+</p>
+
+        <h2>Iniciar sesión</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Iniciar sesion</button>
+            <p class="enlace-registro">
+                <a href="{% url 'password_reset' %}">¿Olvidaste tu contraseña?</a>
+         </p>
+        </form>
+
+        <p class="enlace-registro">
+            ¿No tienes una cuenta? <a href="{% url 'crear_cuenta' %}">Regístrate aquí</a>
+        </p>
+
+        
+
+    </div>
+</body>
+</html>

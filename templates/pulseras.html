@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Pulseras</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <section class="catalogo-pulseras">
+        <h1>Catálogo de Pulseras</h1>
+
+        <div class="catalogo-grid">
+            {% if productos %}
+                {% for producto in productos %}
+                <article class="pulsera">
+                    <img src="{% static 'imagenes/' %}{{ producto.imagen }}" alt="{{ producto.nombre }}">
+                    <h3>{{ producto.nombre }}</h3>
+                    <p>Precio: ${{ producto.precio }}</p>
+                    <a href="{% url 'agregar_al_carrito' producto.id %}" class="btn-agregar-carrito">Agregar al carrito</a>
+                </article>
+                {% endfor %}
+            {% else %}
+                <p>No hay productos disponibles en esta categoría.</p>
+            {% endif %}
+        </div>
+
+        <a href="{% url 'inicio' %}" class="btn-regresar">← Regresar</a>
+    </section>
+</body>
+</html>
