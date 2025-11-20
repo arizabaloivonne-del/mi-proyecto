@@ -660,14 +660,13 @@ footer {
 }
 
 .menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative; /* o simplemente eliminar esta línea */
   display: flex;
   align-items: center;
-  justify-content: space-between; /* alinea logo y navbar */
+  justify-content: space-between;
+  margin-top: 20px; /* ya tienes este espaciado */
 }
+
 
 /* Contenido principal centrado y con ancho controlado */
 main {
