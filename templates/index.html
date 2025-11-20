@@ -26,39 +26,56 @@
 
     <!-- Header principal -->
     <header class="header">
-        <div class="menu container">
-            <!-- Logo -->
-            <a href="/" class="logo">
-                <img src="{% static 'imagenes/logo2.PNG' %}" alt="Logo del sitio web">
-            </a>
+    <div class="menu container">
+        <!-- Logo a la izquierda -->
+        <a href="/" class="logo">
+            <img src="{% static 'imagenes/logo2.PNG' %}" alt="Logo del sitio web">
+        </a>
 
-            <!-- Barra de navegación -->
-            <nav class="navbar">
-                <ul>
-                    <li><a href="{% url 'ver_carrito' %}"><img src="{% static 'imagenes/imagen6.png' %}" alt="carrito"></a></li>
-                    <li><a href="{% url 'crear_cuenta' %}"><img src="{% static 'imagenes/imagen9.png' %}" alt="registro"></a></li>
-                    <li><a href="{% url 'opinion' %}">Opiniones</a></li>
-                </ul>
-            </nav>
-        </div>
+        <!-- Menú de navegación a la derecha -->
+        <nav class="navbar">
+            <ul>
+                <li><a href="{% url 'ver_carrito' %}"><img src="{% static 'imagenes/imagen6.png' %}" alt="carrito"></a></li>
+                <li><a href="{% url 'crear_cuenta' %}"><img src="{% static 'imagenes/imagen9.png' %}" alt="registro"></a></li>
+                <li><a href="{% url 'opinion' %}">Opiniones</a></li>
+            </ul>
+        </nav>
+    </div>
 
-        <!-- Texto e imagen del header -->
-        <div class="header-content container">
-            <div class="header-txt">
-                <h1>AL MEJOR PRECIO!!</h1>
-                <p>
-                    Descubre una amplia variedad de productos diseñados especialmente para ti, con la mejor calidad 
-                    y precios que no podrás creer. ¡Aquí encontrarás todo lo que necesitas al alcance de un clic! 
-                    Nuestra selección está pensada para ofrecerte las mejores ofertas, sin sacrificar la calidad que mereces.
-                    Navega por nuestra tienda y aprovecha los descuentos exclusivos que hemos preparado para ti.
-                </p>
-            </div>
-            <div class="header-img">
-                <img src="{% static 'imagenes/imagen8.png' %}" alt="imgproducto">
-                <a href="{% url 'informacion' %}" class="btn-1">Información</a>
-            </div>
+    <!-- Bloque de sesión abajo del logo, alineado a la izquierda -->
+    <div class="menu-sesion container">
+        <p>
+            {% if user.is_authenticated %}
+                Bienvenido, {{ user.username }} |
+                <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-link">Cerrar sesión</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Iniciar sesión</a> |
+                <a href="{% url 'crear_cuenta' %}">Registrarse</a>
+            {% endif %}
+        </p>
+    </div>
+
+    <!-- Texto e imagen del header -->
+    <div class="header-content container">
+        <div class="header-txt">
+            <h1>AL MEJOR PRECIO!!</h1>
+            <p>
+                Descubre una amplia variedad de productos diseñados especialmente para ti, con la mejor calidad 
+                y precios que no podrás creer. ¡Aquí encontrarás todo lo que necesitas al alcance de un clic! 
+                Nuestra selección está pensada para ofrecerte las mejores ofertas, sin sacrificar la calidad que mereces.
+                Navega por nuestra tienda y aprovecha los descuentos exclusivos que hemos preparado para ti.
+            </p>
         </div>
-    </header>
+        <div class="header-img">
+            <img src="{% static 'imagenes/imagen8.png' %}" alt="imgproducto">
+            <a href="{% url 'informacion' %}" class="btn-1">Información</a>
+        </div>
+    </div>
+</header>
+
 
     <!-- Catálogo -->
     <section class="m-content container">
