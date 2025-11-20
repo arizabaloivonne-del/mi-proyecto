@@ -7,25 +7,32 @@
     <link rel="stylesheet" href="{% static 'css/estilos_v2.css' %}">
 </head>
 <body>
+
+    <!-- Bloque de sesión arriba del header -->
+    <div class="usuario-sesion container">
+        <p>
+            {% if user.is_authenticated %}
+                Bienvenido, {{ user.username }} |
+                <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-link">Cerrar sesión</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Iniciar sesión</a> |
+                <a href="{% url 'crear_cuenta' %}">Registrarse</a>
+            {% endif %}
+        </p>
+    </div>
+
+    <!-- Header principal -->
     <header class="header">
         <div class="menu container">
-            <p id="usuario-sesion">
-                {% if user.is_authenticated %}
-                    Bienvenido, {{ user.username }} |
-                    <form method="post" action="{% url 'logout' %}" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="btn-link">Cerrar sesión</button>
-                    </form>
-                {% else %}
-                    <a href="{% url 'login' %}">Iniciar sesión</a> |
-                    <a href="{% url 'crear_cuenta' %}">Registrarse</a>
-                {% endif %}
-            </p>
-
-            <a href="#" class="logo">
+            <!-- Logo -->
+            <a href="/" class="logo">
                 <img src="{% static 'imagenes/logo2.PNG' %}" alt="Logo del sitio web">
             </a>
 
+            <!-- Barra de navegación -->
             <nav class="navbar">
                 <ul>
                     <li><a href="{% url 'ver_carrito' %}"><img src="{% static 'imagenes/imagen6.png' %}" alt="carrito"></a></li>
@@ -35,5 +42,61 @@
             </nav>
         </div>
 
+        <!-- Texto e imagen del header -->
         <div class="header-content container">
             <div class="header-txt">
+                <h1>AL MEJOR PRECIO!!</h1>
+                <p>
+                    Descubre una amplia variedad de productos diseñados especialmente para ti, con la mejor calidad 
+                    y precios que no podrás creer. ¡Aquí encontrarás todo lo que necesitas al alcance de un clic! 
+                    Nuestra selección está pensada para ofrecerte las mejores ofertas, sin sacrificar la calidad que mereces.
+                    Navega por nuestra tienda y aprovecha los descuentos exclusivos que hemos preparado para ti.
+                </p>
+            </div>
+            <div class="header-img">
+                <img src="{% static 'imagenes/imagen8.png' %}" alt="imgproducto">
+                <a href="{% url 'informacion' %}" class="btn-1">Información</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Catálogo -->
+    <section class="m-content container">
+        <a href="{% url 'collares' %}"><img src="{% static 'imagenes/imagen2.jpg' %}" alt="collares"></a>
+        <a href="{% url 'anillos' %}"><img src="{% static 'imagenes/imagen3.jpg' %}" alt="anillos"></a>
+        <a href="{% url 'aretes' %}"><img src="{% static 'imagenes/imagen4.jpg' %}" alt="aretes"></a>
+        <a href="{% url 'pulseras' %}"><img src="{% static 'imagenes/imagen5.jpg' %}" alt="pulseras"></a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <ul class="horizontal-links">
+                <li><a href="{% url 'servicios' %}">Servicios</a></li>
+                <li><a href="{% url 'privacidad' %}">Política de privacidad</a></li>
+                <li><a href="https://wa.me/528311150179?text=Hola,%20necesito%20ayuda" target="_blank">Ayuda</a></li>
+                <li><a href="{% url 'envios' %}">Envíos</a></li>
+                <li><a href="{% url 'pagos' %}">Pago</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-social">
+            <ul class="social-icons">
+                <li><a href="https://facebook.com" target="_blank">
+                    <img src="{% static 'imagenes/face.png' %}" alt="Facebook" width="30">
+                </a></li>
+                <li><a href="https://instagram.com" target="_blank">
+                    <img src="{% static 'imagenes/insta.png' %}" alt="Instagram" width="30">
+                </a></li>
+                <li><a href="https://www.youtube.com" target="_blank">
+                    <img src="{% static 'imagenes/you.png' %}" alt="Youtube" width="30">
+                </a></li>
+            </ul>
+        </div>
+        
+        <p>&copy; 2025 MichelleJewelry. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>
