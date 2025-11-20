@@ -1,95 +1,363 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Michelle Jewelry</title>
-    <link rel="stylesheet" href="{% static 'css/estilos_v2.css' %}">
-</head>
-<body>
-    <header class="header">
-        <div class="menu container">
-            <p id="usuario-sesion">
-                {% if user.is_authenticated %}
-                    Bienvenido, {{ user.username }} |
-                    <form method="post" action="{% url 'logout' %}" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="btn-link">Cerrar sesión</button>
-                    </form>
-                {% else %}
-                    <a href="{% url 'login' %}">Iniciar sesión</a> |
-                    <a href="{% url 'crear_cuenta' %}">Registrarse</a>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
-                {% endif %}
-            </p>
+/* ========== GLOBAL RESET ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
 
-            <a href="#" class="logo">
-                <img src="{% static 'imagenes/logo2.PNG' %}" alt="Logo del sitio web">
-            </a>
+html, body {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
 
-            <nav class="navbar">
-                <ul>
-                    <li><a href="{% url 'ver_carrito' %}"><img src="{% static 'imagenes/imagen6.png' %}" alt="carrito"></a></li>
-                    <li><a href="{% url 'crear_cuenta' %}"><img src="{% static 'imagenes/imagen9.png' %}" alt="registro"></a></li>
-                    <li><a href="{% url 'opinion' %}">Opiniones</a></li>
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
-                </ul>
-            </nav>
-        </div>
+main.container {
+  flex: 1;
+}
 
-        <div class="header-content container">
-            <div class="header-txt">
-                <h1>AL MEJOR PRECIO!!</h1>
-                <p>
-                    Descubre una amplia variedad de productos diseñados especialmente para ti, con la mejor calidad 
-                    y precios que no podrás creer. ¡Aquí encontrarás todo lo que necesitas al alcance de un clic! 
-                    Nuestra selección está pensada para ofrecerte las mejores ofertas, sin sacrificar la calidad que mereces.
-                    Navega por nuestra tienda y aprovecha los descuentos exclusivos que hemos preparado para ti.
-                </p>
-            </div>
-            <div class="header-img">
-                <img src="{% static 'imagenes/imagen8.png' %}" alt="imgproducto">
-              <a href="{% url 'informacion' %}" class="btn-1">Información</a>
+/* ========== CONTENEDOR GENERAL ========== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
-            </div>
-        </div>
-    </header>
+/* ========== HEADER Y MENÚ SUPERIOR ========== */
+.header {
+  background-color: #fcccd5; /* fondo rosa */
+  padding: 20px 0;
+  position: sticky; /* menú fijo arriba */
+  top: 0;
+  z-index: 1000;
+}
 
- <section class="m-content container">
-    <a href="{% url 'collares' %}"><img src="{% static 'imagenes/imagen2.jpg' %}" alt="collares"></a>
-    <a href="{% url 'anillos' %}"><img src="{% static 'imagenes/imagen3.jpg' %}" alt="anillos"></a>
-    <a href="{% url 'aretes' %}"><img src="{% static 'imagenes/imagen4.jpg' %}" alt="aretes"></a>
-    <a href="{% url 'pulseras' %}"><img src="{% static 'imagenes/imagen5.jpg' %}" alt="pulseras"></a>
-</section>
+/* Bloque de sesión (login/registro) arriba */
+.usuario-sesion {
+  text-align: right;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
 
-    <footer>
-        <div class="footer-links">
-            <ul class="horizontal-links">
-                <li><a href="{% url 'servicios' %}">Servicios</a></li>
-                <li><a href="{% url 'privacidad' %}">Política de privacidad</a></li>
-                <li><a href="https://wa.me/528311150179?text=Hola,%20necesito%20ayuda" target="_blank">Ayuda</a></li>
-                <li><a href="{% url 'envios' %}">Envíos</a></li>
-                <li><a href="{% url 'pagos' %}">Pago</a></li>
-            </ul>
-        </div>
-        
-        <div class="footer-social">
-            <ul class="social-icons">
-                <li><a href="https://facebook.com" target="_blank">
-                    <img src="{% static 'imagenes/face.png' %}" alt="Facebook" width="30">
-                </a></li>
-                <li><a href="https://instagram.com" target="_blank">
-                    <img src="{% static 'imagenes/insta.png' %}" alt="Instagram" width="30">
-                </a></li>
-                <li><a href="https://www.youtube.com" target="_blank">
-                    <img src="{% static 'imagenes/you.png' %}" alt="Youtube" width="30">
-                </a></li>
-            </ul>
-        </div>
-        
-        <p>&copy; 2025 MichelleJewelry. Todos los derechos reservados.</p>
-    </footer>
+.usuario-sesion a,
+.usuario-sesion button {
+  color: #ee7f91;
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
 
-    <script src="{% static 'js/app.js' %}"></script>
-</body>
-</html>
+.usuario-sesion a:hover,
+.usuario-sesion button:hover {
+  color: #c4497c;
+  text-decoration: underline;
+}
+
+/* Contenedor del menú principal */
+.menu {
+  display: flex;
+  justify-content: space-between; /* logo a la izquierda, menú a la derecha */
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo img {
+  max-width: 180px;
+  height: auto;
+}
+
+/* Barra de navegación */
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li a {
+  padding: 8px 12px;
+  border-radius: 3px;
+  color: #ee7f91;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  background-color: #ee7f91;
+  color: white;
+  text-decoration: underline;
+}
+
+.navbar img {
+  width: 30px;
+  height: auto;
+  vertical-align: middle;
+}
+
+/* ========== HEADER CONTENIDO ========== */
+.header-txt {
+  margin-top: 40px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.header-txt h1 {
+  font-size: 2rem;
+  margin-top: 20px;
+  color: #ee7f91;
+}
+
+.header-img {
+  margin: 20px auto;
+  text-align: center;
+  position: relative;
+}
+
+.header-img img {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.btn-1 {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background-color: #c4497c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  z-index: 5;
+}
+
+.btn-1:hover {
+  background-color: #f880c2;
+  border: 1px solid #0e0d0d;
+}
+
+/* ========== BOTONES GENERALES ========== */
+button,
+input[type="submit"],
+.btn-volver,
+.btn-confirmar,
+.btn-regresar,
+.opinion-form button,
+.registro-container button,
+.login-container button {
+  background-color: #f880c2;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button:hover,
+input[type="submit"]:hover,
+.btn-volver:hover,
+.btn-confirmar:hover,
+.btn-regresar:hover,
+.opinion-form button:hover,
+.registro-container button:hover,
+.login-container button:hover {
+  background-color: #ee7f91;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* ========== MAIN CONTENT ========== */
+main {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fefefe;
+  color: #2B2B2B;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+main img {
+  margin: 20px auto;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ========== CATÁLOGO Y PRODUCTOS ========== */
+.m-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  padding: 40px 20px;
+  margin-top: 40px;
+  justify-items: center;
+  background-color: #fefefe;
+}
+
+.m-content img {
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.m-content img:hover {
+  transform: scale(1.05);
+}
+
+.producto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.producto img {
+  width: 70%;
+  max-width: 150px;
+  border-radius: 20px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.btn-agregar-carrito {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #ee7f91;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn-agregar-carrito:hover {
+  background-color: #d96a7d;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background-color: #fcccd5;
+  text-align: center;
+  margin-top: auto;
+  color: #2B2B2B;
+  padding: 20px;
+}
+
+.footer-links,
+.footer-social {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.horizontal-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.horizontal-links li {
+  display: inline-block;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+}
+
+/* ========== MEDIA QUERIES ========== */
+@media (max-width: 768px) {
+  .navbar ul,
+  .horizontal-links,
+  .social-icons {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header-txt h1 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+  }
+
+  .m-content {
+    margin-top: 60px;
+    padding-top: 20px;
+  }
+
+  .btn-1 {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1, h2 {
+    font-size: 1.2rem;
+  }
+
+  .btn-1 {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+
+  .m-content {
+    grid-template-columns: 1fr;
+  }
+
+  .producto {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .producto img {
+    margin: 0 0 10px;
+  }
+
+  .total {
+    width: 90%;
+  }
+}
