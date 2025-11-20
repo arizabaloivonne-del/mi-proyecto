@@ -7,22 +7,25 @@
     <link rel="stylesheet" href="{% static 'css/estilos_v2.css' %}">
 </head>
 <body>
+
+    <!-- Bloque de sesión arriba del header -->
+    <div class="usuario-sesion container">
+        <p>
+            {% if user.is_authenticated %}
+                Bienvenido, {{ user.username }} |
+                <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-link">Cerrar sesión</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Iniciar sesión</a> |
+                <a href="{% url 'crear_cuenta' %}">Registrarse</a>
+            {% endif %}
+        </p>
+    </div>
+
     <header class="header">
         <div class="menu container">
-            <p id="usuario-sesion">
-                {% if user.is_authenticated %}
-                    Bienvenido, {{ user.username }} |
-                    <form method="post" action="{% url 'logout' %}" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="btn-link">Cerrar sesión</button>
-                    </form>
-                {% else %}
-                    <a href="{% url 'login' %}">Iniciar sesión</a> |
-                    <a href="{% url 'crear_cuenta' %}">Registrarse</a>
-
-                {% endif %}
-            </p>
-
             <a href="#" class="logo">
                 <img src="{% static 'imagenes/logo2.PNG' %}" alt="Logo del sitio web">
             </a>
@@ -32,7 +35,6 @@
                     <li><a href="{% url 'ver_carrito' %}"><img src="{% static 'imagenes/imagen6.png' %}" alt="carrito"></a></li>
                     <li><a href="{% url 'crear_cuenta' %}"><img src="{% static 'imagenes/imagen9.png' %}" alt="registro"></a></li>
                     <li><a href="{% url 'opinion' %}">Opiniones</a></li>
-
                 </ul>
             </nav>
         </div>
@@ -49,19 +51,20 @@
             </div>
             <div class="header-img">
                 <img src="{% static 'imagenes/imagen8.png' %}" alt="imgproducto">
-              <a href="{% url 'informacion' %}" class="btn-1">Información</a>
-
+                <a href="{% url 'informacion' %}" class="btn-1">Información</a>
             </div>
         </div>
     </header>
 
- <section class="m-content container">
-    <a href="{% url 'collares' %}"><img src="{% static 'imagenes/imagen2.jpg' %}" alt="collares"></a>
-    <a href="{% url 'anillos' %}"><img src="{% static 'imagenes/imagen3.jpg' %}" alt="anillos"></a>
-    <a href="{% url 'aretes' %}"><img src="{% static 'imagenes/imagen4.jpg' %}" alt="aretes"></a>
-    <a href="{% url 'pulseras' %}"><img src="{% static 'imagenes/imagen5.jpg' %}" alt="pulseras"></a>
-</section>
+    <!-- Catálogo -->
+    <section class="m-content container">
+        <a href="{% url 'collares' %}"><img src="{% static 'imagenes/imagen2.jpg' %}" alt="collares"></a>
+        <a href="{% url 'anillos' %}"><img src="{% static 'imagenes/imagen3.jpg' %}" alt="anillos"></a>
+        <a href="{% url 'aretes' %}"><img src="{% static 'imagenes/imagen4.jpg' %}" alt="aretes"></a>
+        <a href="{% url 'pulseras' %}"><img src="{% static 'imagenes/imagen5.jpg' %}" alt="pulseras"></a>
+    </section>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-links">
             <ul class="horizontal-links">
