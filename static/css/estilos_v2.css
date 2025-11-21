@@ -602,9 +602,11 @@ footer {
 
 .producto > div {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  justify-items: center;
+  text-align: center;
 }
 
 .producto h3 {
@@ -683,4 +685,249 @@ footer {
 .btn-seguir:hover,
 #quitar-seleccion:hover {
   background-color: #ee7f91;
+}
+
+@media (max-width: 768px) {
+  .producto {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .producto img {
+    margin-bottom: 10px;
+  }
+
+  .producto form {
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .producto input[type="number"] {
+    margin-bottom: 10px;
+  }
+}
+.titulo-carrito {
+  text-align: center;
+  font-size: 2rem;
+  color: #c4497c;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+
+.titulo-centrado {
+  text-align: center;
+  font-size: 2rem;
+  color: #c4497c;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+
+/* ========== RESUMEN DE COMPRA ========== */
+.resumen-compra {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #2B2B2B;
+  font-size: 16px;
+}
+
+.tabla-resumen {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.tabla-resumen th,
+.tabla-resumen td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.tabla-resumen th {
+  background-color: #fcccd5;
+  color: #c4497c;
+  font-weight: 600;
+}
+
+.tabla-resumen td {
+  background-color: #fefefe;
+}
+
+.resumen-compra h2 {
+  text-align: center;
+  color: #c4497c;
+  margin-bottom: 20px;
+}
+
+.resumen-compra form,
+.resumen-compra a.btn-regresar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.resumen-compra .btn-confirmar,
+.resumen-compra .btn-regresar {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  background-color: #f880c2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.resumen-compra .btn-confirmar:hover,
+.resumen-compra .btn-regresar:hover {
+  background-color: #ee7f91;
+}
+
+
+
+
+
+.logo img {
+  max-width: 220px;
+  height: auto;
+}
+
+.subtitulo {
+  background-color: #0e0d0d;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+.logo img {
+  max-width: 220px;
+  height: auto;
+}
+
+.subtitulo {
+  background-color: #0e0d0d;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+
+
+.menu-sesion {
+  font-size: 0.9rem;
+  color: #ee7f91;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar li img {
+  width: 30px;
+  height: auto;
+}
+
+
+
+.menu-horizontal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.menu-izquierda {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo img {
+  max-width: 180px;
+  height: auto;
+}
+
+.menu-sesion {
+  font-size: 0.9rem;
+  color: #ee7f91;
+}
+
+.menu-sesion p {
+  font-size: 1.2rem;   
+  font-weight: 600;    
+  color: #0e0d0d;      
+  margin: 0;
+}
+
+
+.menu-sesion button {
+  background: none;
+  border: none;
+  color: #ee7f91;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.menu-sesion button:hover {
+  color: #c4497c;
+  text-decoration: underline;
+}
+
+.subtitulo-centro {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.subtitulo {
+  background-color: #0e0d0d;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+
+
+.btn-cerrar {
+  padding: 8px 16px;
+  background-color: #c4497c;   /* rosa fuerte */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-cerrar:hover {
+  background-color: #ee7f91;   /* rosa más suave al pasar el mouse */
+  transform: scale(1.05);      /* efecto ligero de zoom */
 }
