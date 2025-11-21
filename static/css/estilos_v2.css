@@ -1003,3 +1003,81 @@ body.centrado {
 .enlace-registro a:hover {
   text-decoration: underline;
 }
+
+body.pagina-crear-cuenta {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.wrap {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.wrap h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.wrap label {
+  display: block;
+  text-align: left;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #555;
+}
+
+.wrap input[type="text"],
+.wrap input[type="email"],
+.wrap input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.wrap input[type="submit"] {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.wrap input[type="submit"]:hover {
+  background-color: #d81b60;
+}
+
+.enlace-login {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.enlace-login a {
+  color: #e91e63;
+  text-decoration: none;
+}
+
+.enlace-login a:hover {
+  text-decoration: underline;
+}
+
+.errores-formulario {
+  margin-bottom: 15px;
+  text-align: left;
+}
