@@ -12,11 +12,13 @@
     <header class="header">
         <div class="menu container">
             <!-- Columna izquierda: logo + sesión -->
-            <div class="menu-izquierda">
-                <a href="/" class="logo">
-                    <img src="{% static 'imagenes/logo2.PNG' %}" alt="Logo del sitio web">
-                </a>
-                <div class="menu-sesion">
+              <div class="logo-centrado container">
+    <a href="/" class="logo">
+        <img src="{% static 'imagenes/logo2.PNG' %}" alt="Logo del sitio web">
+    </a>
+    <p class="subtitulo">Joyería Mayorista</p>
+</div>
+
                     <p>
                         {% if user.is_authenticated %}
                             Bienvenido, {{ user.username }} |
