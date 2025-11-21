@@ -41,12 +41,6 @@
                 </ul>
             </nav>
         </div>
-
-        <!-- Imagen destacada centrada hacia la derecha -->
-        <div class="header-img container">
-            <img src="{% static 'imagenes/imagen8.png' %}" alt="imgproducto">
-            <a href="{% url 'informacion' %}" class="btn-1">Información</a>
-        </div>
     </header>
 
     <!-- Catálogo -->
@@ -57,9 +51,15 @@
         <a href="{% url 'pulseras' %}"><img src="{% static 'imagenes/imagen5.jpg' %}" alt="pulseras"></a>
     </section>
 
+    <!-- Imagen destacada en zona blanca -->
+    <section class="promo container">
+        <img src="{% static 'imagenes/imagen8.png' %}" alt="imgproducto">
+        <a href="{% url 'informacion' %}" class="btn-1">Información</a>
+    </section>
+
     <!-- Footer -->
     <footer>
- <div class="footer-links">
+        <div class="footer-links">
             <ul class="horizontal-links">
                 <li><a href="{% url 'servicios' %}">Servicios</a></li>
                 <li><a href="{% url 'privacidad' %}">Política de privacidad</a></li>
