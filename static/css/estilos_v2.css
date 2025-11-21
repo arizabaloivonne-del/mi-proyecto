@@ -301,3 +301,11 @@ footer {
     width: 90%;
   }
 }
+
+.titulo-carrito {
+  text-align: center;
+  font-size: 2rem;
+  color: #c4497c;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
