@@ -10,15 +10,12 @@
 
     <!-- Header principal -->
     <header class="header">
-        <div class="menu-centrado container">
-            <!-- Logo centrado -->
-            <a href="/" class="logo">
-                <img src="{% static 'imagenes/logo2.PNG' %}" alt="Logo del sitio web">
-            </a>
-            <p class="subtitulo">Joyería Mayorista</p>
-
-            <!-- Bloque alineado: sesión + íconos -->
-            <div class="menu-sesion-iconos">
+        <div class="menu-horizontal container">
+            <!-- Izquierda: logo + saludo -->
+            <div class="menu-izquierda">
+                <a href="/" class="logo">
+                    <img src="{% static 'imagenes/logo2.PNG' %}" alt="Logo del sitio web">
+                </a>
                 <div class="menu-sesion">
                     {% if user.is_authenticated %}
                         <p>Bienvenido, {{ user.username }} /</p>
@@ -31,15 +28,21 @@
                         <a href="{% url 'crear_cuenta' %}">Registrarse</a>
                     {% endif %}
                 </div>
-
-                <nav class="navbar">
-                    <ul>
-                        <li><a href="{% url 'ver_carrito' %}"><img src="{% static 'imagenes/imagen6.png' %}" alt="carrito"></a></li>
-                        <li><a href="{% url 'crear_cuenta' %}"><img src="{% static 'imagenes/imagen9.png' %}" alt="registro"></a></li>
-                        <li><a href="{% url 'opinion' %}">Opiniones</a></li>
-                    </ul>
-                </nav>
             </div>
+
+            <!-- Derecha: íconos -->
+            <nav class="navbar">
+                <ul>
+                    <li><a href="{% url 'ver_carrito' %}"><img src="{% static 'imagenes/imagen6.png' %}" alt="carrito"></a></li>
+                    <li><a href="{% url 'crear_cuenta' %}"><img src="{% static 'imagenes/imagen9.png' %}" alt="registro"></a></li>
+                    <li><a href="{% url 'opinion' %}">Opiniones</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Subtítulo centrado debajo -->
+        <div class="subtitulo-centro">
+            <p class="subtitulo">Joyería Mayorista</p>
         </div>
     </header>
 
