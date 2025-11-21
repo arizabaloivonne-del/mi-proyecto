@@ -43,18 +43,18 @@
         </div>
     </header>
 
+    <!-- Imagen destacada en zona blanca (antes del catálogo) -->
+    <section class="promo container">
+        <img src="{% static 'imagenes/imagen8.png' %}" alt="imgproducto">
+        <a href="{% url 'informacion' %}" class="btn-1">Información</a>
+    </section>
+
     <!-- Catálogo -->
     <section class="m-content container">
         <a href="{% url 'collares' %}"><img src="{% static 'imagenes/imagen2.jpg' %}" alt="collares"></a>
         <a href="{% url 'anillos' %}"><img src="{% static 'imagenes/imagen3.jpg' %}" alt="anillos"></a>
         <a href="{% url 'aretes' %}"><img src="{% static 'imagenes/imagen4.jpg' %}" alt="aretes"></a>
         <a href="{% url 'pulseras' %}"><img src="{% static 'imagenes/imagen5.jpg' %}" alt="pulseras"></a>
-    </section>
-
-    <!-- Imagen destacada en zona blanca -->
-    <section class="promo container">
-        <img src="{% static 'imagenes/imagen8.png' %}" alt="imgproducto">
-        <a href="{% url 'informacion' %}" class="btn-1">Información</a>
     </section>
 
     <!-- Footer -->
